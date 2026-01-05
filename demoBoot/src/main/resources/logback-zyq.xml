@@ -2,7 +2,8 @@
 <configuration>
 
     <property name ="PATTERN" value="%-12(%d{yyyy-MM-dd HH:mm:ss.sss}) |-%-5level [%thread] %c [%L]-| %msg%n" />
-    <property name  = "TEST_FILE_PATH" value="/Users/macos/logger"/>
+    <!-- Allow overriding log directory; default to local ./logs for portability -->
+    <property name="LOG_DIR" value="${LOG_DIR:-logs}"/>
     <springProfile name = "dev">
         <appender name = "CONSOLE" class = "ch.qos.logback.core.ConsoleAppender">
             <encoder>
@@ -20,7 +21,7 @@
     <springProfile name="test">
    <appender name = "TEST-FILE" class = "ch.qos.logback.core.rolling.RollingFileAppender">
     <rollingPolicy class = "ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-        <fileNamePattern>${TEST_FILE_PATH}/info.%d{yyyy-MM-dd}.log</fileNamePattern>
+        <fileNamePattern>${LOG_DIR}/info.%d{yyyy-MM-dd}.log</fileNamePattern>
         <MaxHistory>100</MaxHistory>
     </rollingPolicy>
        <layout class = "ch.qos.logback.classic.PatternLayout">
