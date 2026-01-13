@@ -73,7 +73,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
-                    <!-- 默认空；JDK9+ 通过 profile 注入 --add-opens，避免 Spring Boot 1.5 在高版本JDK下反射受限 -->
+                    <!-- 默认空；JDK9+ 通过 profile 注入 add-opens 参数，避免 Spring Boot 1.5 在高版本JDK下反射受限 -->
                     <argLine>${surefireArgLine}</argLine>
                 </configuration>
             </plugin>
