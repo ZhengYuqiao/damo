@@ -2,7 +2,8 @@
 <configuration>
 
     <property name ="PATTERN" value="%-12(%d{yyyy-MM-dd HH:mm:ss.sss}) |-%-5level [%thread] %c [%L]-| %msg%n" />
-    <property name  = "TEST_FILE_PATH" value="/Users/macos/logger"/>
+    <!-- 日志目录：默认写到项目 ./logs，可通过系统属性 -DLOG_HOME 覆盖 -->
+    <property name="LOG_HOME" value="${LOG_HOME:-./logs}"/>
     <springProfile name = "dev">
         <appender name = "CONSOLE" class = "ch.qos.logback.core.ConsoleAppender">
             <encoder>
@@ -20,7 +21,7 @@
     <springProfile name="test">
    <appender name = "TEST-FILE" class = "ch.qos.logback.core.rolling.RollingFileAppender">
     <rollingPolicy class = "ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-        <fileNamePattern>${TEST_FILE_PATH}/info.%d{yyyy-MM-dd}.log</fileNamePattern>
+        <fileNamePattern>${LOG_HOME}/info.%d{yyyy-MM-dd}.log</fileNamePattern>
         <MaxHistory>100</MaxHistory>
     </rollingPolicy>
        <layout class = "ch.qos.logback.classic.PatternLayout">
