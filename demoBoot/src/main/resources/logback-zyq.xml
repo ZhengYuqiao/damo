@@ -2,7 +2,7 @@
 <configuration>
 
     <property name ="PATTERN" value="%-12(%d{yyyy-MM-dd HH:mm:ss.sss}) |-%-5level [%thread] %c [%L]-| %msg%n" />
-    <property name  = "TEST_FILE_PATH" value="/Users/macos/logger"/>
+    <property name  = "TEST_FILE_PATH" value="./logs"/>
     <springProfile name = "dev">
         <appender name = "CONSOLE" class = "ch.qos.logback.core.ConsoleAppender">
             <encoder>
